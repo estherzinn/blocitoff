@@ -4,8 +4,14 @@ class TasksController < ApplicationController
   respond_to :html
  
 def index
-  @tasks = current_user.tasks
+  @to_do = current_user.tasks.where(state: "to_do")
+  @doing = current_user.tasks.where(state: "doing")
+  @done = current_user.tasks.where(state: "done")
   respond_with(@tasks)
+end
+ 
+def task_params
+  params.require(:task).permit(:content,:state)
 end
  
 def create
@@ -47,7 +53,5 @@ end
       @task = Task.find(params[:id])
     end
 
-    def task_params
-      params.require(:task).permit(:content)
-    end
+    
 end

@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :authenticate_user!
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :change]
 
   respond_to :html
  
@@ -12,6 +12,15 @@ end
  
 def task_params
   params.require(:task).permit(:content,:state)
+end
+
+
+ 
+def change
+  @task.update_attributes(state: params[:state])
+  respond_to do |format|
+    format.html {redirect_to tasks_path, notice: "Task Update"}
+  end
 end
  
 def create

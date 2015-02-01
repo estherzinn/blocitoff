@@ -19,3 +19,5 @@
     <% end %>
   </div>
 </div>
+
+<%= link_to "x", task_path(task), method: :delete, data: {confirm: "Are you sure?"}, class: "pull-right" %>

@@ -14,7 +14,7 @@ class Task < ActiveRecord::Base
   end
 
   def days_left
-    (DateTime.now.to_date - created_at.to_date).to_i
+    ((604800 - (Time.now - created_at)) / 86400).round(1)  
   end  
 end
 

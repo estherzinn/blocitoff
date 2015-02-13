@@ -1,7 +1,8 @@
 <div class="panel panel-info">
   <div class="panel-heading">
+  <div class='col-md-2'></div>
   <%= link_to edit_task_path(task) do %>
-  created <%= time_ago_in_words(task.created_at) %> ago
+   <left><%= task.days_left %> days left</left>
   <% end %>
   </div>
   <div class="panel-body"><%= raw(task.content_html) %></div>

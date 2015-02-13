@@ -12,5 +12,9 @@ class Task < ActiveRecord::Base
   link :target => "_blank", :rel => "nofollow"
   simple_format
   end
+
+  def days_left
+    (DateTime.now.to_date - created_at.to_date).to_i
+  end  
 end
 
